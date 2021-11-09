@@ -200,19 +200,17 @@ import java.util.stream.Stream;
 			   printContactInfo();
 			   	Collections.sort(listContactInfo, (o1, o2) -> (o1.getState().compareTo(o2.getState())));
 			   	printContactInfo();
-				   System.out.println("After sorting list of Contact Informations : ");
-				   
+				   System.out.println("After sorting list of Contact Informations : ");		   
 		}
-		
 		public void WriteToFile() throws IOException
 		{
-			FileWriter fw = new FileWriter("Data.csv");
+			FileWriter fw = new FileWriter("DBAddressBook.txt");
 			System.out.println("File Writing Started");
-			fw.write("FirstName,LastName,Address,State,Zip,Phone,Email\n");
+			fw.write("FirstName LastName Address State Zip Phone Email\n");
 			for(int i=0;i<listContactInfo.size();i++) {
-				fw.write(listContactInfo.get(i).FirstName+","+listContactInfo.get(i).LastName+","
-			+listContactInfo.get(i).Address+","+listContactInfo.get(i).State+","
-			+listContactInfo.get(i).Zip+","+listContactInfo.get(i).PhoneNumber+","+listContactInfo.get(i).Email+"\n");
+				fw.write(listContactInfo.get(i).FirstName+" "+listContactInfo.get(i).LastName+" "
+			+listContactInfo.get(i).Address+" "+listContactInfo.get(i).State+" "
+			+listContactInfo.get(i).Zip+" "+listContactInfo.get(i).PhoneNumber+" "+listContactInfo.get(i).Email+"\n");
 			
 			}
 			fw.close();
@@ -220,7 +218,7 @@ import java.util.stream.Stream;
 		}
 		public void ReadFromFile() throws IOException {
 			 // Passing the path to the file as a parameter
-	        FileReader fr = new FileReader("D:\\java\\AddressBook-System\\Data.csv");
+	        FileReader fr = new FileReader("D:\\java\\AddressBook-System\\DBAddressBook.txt");
 	 
 	        // Declaring loop variable
 	        Scanner sc = new Scanner(fr);
@@ -228,6 +226,7 @@ import java.util.stream.Stream;
 	        // we just need to use \\Z as delimiter
 	        sc.useDelimiter("\\Z");
 	     
-	        System.out.println(sc.next());
+	        System.out.println(sc.next() +" | ");
 	    }
+		
 	}
